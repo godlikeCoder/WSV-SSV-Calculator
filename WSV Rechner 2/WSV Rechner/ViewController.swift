@@ -10,14 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //will not edit these cause i dont know how the bindings behave
     @IBOutlet weak var eingabeBetragTextfield: UITextField!
     @IBOutlet weak var ersparnisBetragLabel: UILabel!
     @IBOutlet weak var gesamtkostenBetragLabel: UILabel!
     
-    var kosten = 0.0
-    var ersparnis = 0.0
-    var gesamtkosten = 0.0
-    var prozente = 0
+    var cost = 0.0
+    var savings = 0.0
+    var totalSum = 0.0
+    var percent = 0
     
 
     override func viewDidLoad() {
@@ -31,38 +32,38 @@ class ViewController: UIViewController {
 
     @IBAction func prozenButtonTapped(_ sender: UIButton) {
         if sender.titleLabel?.text == "10%" {
-            prozente = 10
+            percent = 10
             
-            ausrechnenDerKosten()
+            calculateCosts()
         } else if sender.titleLabel?.text == "20%" {
-            prozente = 20
+            percent = 20
             
-            ausrechnenDerKosten()
+            calculateCosts()
         } else if sender.titleLabel?.text == "30%" {
-            prozente = 30
+            percent = 30
             
-            ausrechnenDerKosten()
+            calculateCosts()
         } else if sender.titleLabel?.text == "50%" {
-            prozente = 50
+            percent = 50
             
-            ausrechnenDerKosten()
+            calculateCosts()
         }
     }
     
     func printUIElements() {
-        let ersparnisString = String(Int(ersparnis))
-        let gesamtkostenString = String(format: "%.2f", gesamtkosten)
+        let savingsStr = String(Int(savings))
+        let totalSumStr = String(format: "%.2f", totalSum)
         
-        ersparnisBetragLabel.text = "Ersparnis: " + ersparnisString + " €"
-        gesamtkostenBetragLabel.text = "Gesamtkosten: " + gesamtkostenString + " €"
+        ersparnisBetragLabel.text = "Ersparnis: " + savingsStr + " €"
+        gesamtkostenBetragLabel.text = "Gesamtkosten: " + totalSumStr + " €"
     }
     
-    func ausrechnenDerKosten() {
+    func calculateCosts() {
         if eingabeBetragTextfield.text != "" {
-            kosten = Double(eingabeBetragTextfield.text!)!
+            cost = Double(eingabeBetragTextfield.text!)!
             
-            ersparnis = (kosten * Double(prozente)) / 100
-            gesamtkosten = kosten - ersparnis
+            savings = (cost * Double(percent)) / 100
+            totalSum = cost - savings
             
             printUIElements()  
     }
