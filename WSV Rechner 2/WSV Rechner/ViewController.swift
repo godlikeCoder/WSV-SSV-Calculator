@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var eingabeBetragTextfield: UITextField!
     @IBOutlet weak var ersparnisBetragLabel: UILabel!
     @IBOutlet weak var gesamtkostenBetragLabel: UILabel!
@@ -18,7 +17,6 @@ class ViewController: UIViewController {
     var kosten = 0.0
     var ersparnis = 0.0
     var gesamtkosten = 0.0
-    
     var prozente = 0
     
 
@@ -66,10 +64,8 @@ class ViewController: UIViewController {
             ersparnis = (kosten * Double(prozente)) / 100
             gesamtkosten = kosten - ersparnis
             
-            printUIElements()
-            
+            printUIElements()  
     }
 
 }
-
 }
